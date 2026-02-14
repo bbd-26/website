@@ -25,7 +25,7 @@
           <img :src="sakuraIcon" class="decoration-flower left-flower" />
           
           <h2 class="greeting-text">
-            RT 蕭如庭小姐<br>
+            RT 小姐<br>
             情人節快樂！
           </h2>
           
