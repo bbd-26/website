@@ -1,12 +1,13 @@
 <template>
+
  <div class="main-container" :class="{ 'love-cursor': step >= 3  }">
-    <transition name="fade">
-      <div v-if="step === 1" class="overlay">
-        <button class="open-btn" @click="step = 2">
-          <span class="gift-icon"></span> 打開
-        </button>
-      </div>
-    </transition>
+  <transition name="fade">
+    <div v-if="step === 1" class="overlay">
+      <button class="open-btn" @click="handleStart">
+        <span class="gift-icon"></span> 打開
+      </button>
+    </div>
+  </transition>
 
     <transition name="fade">
       <div v-if="step === 2" class="overlay">
@@ -98,6 +99,35 @@ const step = ref(1);
 const isHover = ref(false);
 const showFalling = ref(false); // 新增：獨立控制掉落物
 const showFullLetter = ref(false); // 新增：控制完整信紙的顯示
+
+const bgMusic = ref(null); // 用來存放音軌的 ref
+
+const audio = new Audio('/valentine.mp3'); 
+audio.loop = true;
+
+const handleStart = () => {
+  step.value = 2;
+
+  // 1. 先將音量歸零並開始播放
+  audio.volume = 0;
+  audio.play().catch(e => console.log("播放被阻擋"));
+
+  // 2. 設定漸強邏輯 (Fade-in)
+  const fadeInDuration = 5000; // 漸強持續時間：3秒 (可自行調整)
+  const intervalTime = 100;     // 每 0.05 秒增加一次音量
+  const volumeStep = 0.55 / (fadeInDuration / intervalTime);
+
+  const fadeIn = setInterval(() => {
+    if (audio.volume < 0.55
+    ) {
+      // 確保音量增加不超過 1 (1.0 是最大值)
+      audio.volume = Math.min(audio.volume + volumeStep, 1);
+    } else {
+      // 達到最大音量後清除計時器
+      clearInterval(fadeIn);
+    }
+  }, intervalTime);
+};
 
 // --- 2. 設定掉落物種類與權重 (愛心權重 3，其餘 1) ---
 const rawTypes = [
