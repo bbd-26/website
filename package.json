@@ -1,0 +1,25 @@
+{
+  "name": "my-valentine-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build",     
+    "deploy": "gh-pages -d dist"     
+  },
+  "dependencies": {
+    "@tsparticles/shape-heart": "^3.9.1",
+    "@tsparticles/vue3": "^3.0.1",
+    "canvas-confetti": "^1.9.4",
+    "tsparticles": "^3.9.1",
+    "vue": "^3.5.25"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.2",
+    "gh-pages": "^6.3.0",
+    "vite": "^7.3.1"
+  }
+}
