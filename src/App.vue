@@ -11,7 +11,7 @@
     <transition name="fade">
       <div v-if="step === 2" class="overlay">
         <div class="question-box">
-          <h2 class="question-text">請問你是蕭如庭小姐嗎？</h2>
+          <h2 class="question-text">請問你是 RT 小姐嗎？</h2>
           <button class="open-btn" @click="handleAnswerYes">
             是
           </button>
@@ -64,7 +64,7 @@
           <div v-if="showFullLetter" class="letter-overlay" @click.self="showFullLetter = false">
             <div class="letter-paper">
               <div class="letter-content">
-                <p>hello 蕭如庭寶貝</p>
+                <p>hello  RT 寶貝</p>
                 <br>
                 <p>好開心歐我們終於過了第一個情人節！但因為沒辦法去到你身邊，所以做了這格禮物給你，希望寶貝會喜歡，希望能跟寶貝在一起到好久以後！祝寶貝開心，滑雪加油，在學校順利，跟身邊的人也能好好相處，情人節快樂！</p>
                 <br>
